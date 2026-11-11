@@ -17,7 +17,7 @@ const COUNTRY={'United Kingdom':'Royaume-Uni','Netherlands':'Pays-Bas','EIRE':'I
 const countryName=c=>COUNTRY[c]||c;
 const NAV=[['overview',"Vue d'ensemble"],['customers','Clients et fidélisation'],['products','Catalogue produits'],['method','Données et méthode']];
 const HEADINGS={
- overview:["Ventes d'un commerce en ligne britannique, déc. 2010 – déc. 2011","Chiffre d'affaires mensuel et répartition par pays, pour la période et le pays choisis. Montants en livres sterling, sans conversion de devise."],
+ overview:["Ventes d'un commerce en ligne britannique, de décembre 2010 à décembre 2011","Chiffre d'affaires mensuel et répartition par pays, pour la période et le pays choisis. Montants en livres sterling, sans conversion de devise."],
  customers:['Segments RFM et cohortes mensuelles des clients identifiés',"Seuls les clients dotés d'un identifiant entrent dans la segmentation et les cohortes. Les ventes sans identifiant restent dans les totaux de chiffre d'affaires."],
  products:["Références vendues, classées par chiffre d'affaires net","Unités et chiffre d'affaires net par référence, avoirs déduits. Le catalogue comprend aussi des frais et des ajustements."],
  method:['Provenance des données et définitions des indicateurs',"Transactions d'un commerçant britannique en ligne, du 1er décembre 2010 au 9 décembre 2011. Les montants sont exprimés en livres sterling, sans conversion de devise."]
@@ -118,7 +118,7 @@ function App(){const [data,setData]=useState(null),[manifest,setManifest]=useSta
  <div className="row"><article className="panel prose"><PanelHead title="Source et reproductibilité"/><p>{manifest.citation}</p><p>Licence des données : <a href={manifest.license_url}>Creative Commons Attribution 4.0</a>. Les agrégats diffusés sont une adaptation (nettoyage, pseudonymisation et agrégation). Code sous licence MIT.</p><p>Empreinte SHA-256 de l'archive source :</p><code className="hash">{manifest.source_sha256}</code><p>Le dépôt contient le script Python sans dépendances externes, le modèle étoile SQLite, les tests de réconciliation, les exports Power BI et les décisions méthodologiques.</p><p className="prose-links"><a className="link-button" href={manifest.url} target="_blank" rel="noreferrer">Voir la source UCI<ArrowOut/><span className="sr-only"> (nouvel onglet)</span></a><a className="link-button" href="https://github.com/Badreddine05/retailscope">Consulter le code et la documentation<ArrowOut/></a></p></article></div></>}
  </>}
  </div></main>
- <footer className="site-foot"><div className="site-foot-inner"><p>RetailScope · étude de <a href="../">Badreddine Channoufi</a></p><p>Source : UCI Online Retail · données historiques, <span className="nowrap">2010–2011</span> · <a href="./THIRD_PARTY_NOTICES.txt">Licences tierces</a></p></div></footer>
+ <footer className="site-foot"><div className="site-foot-inner"><p>RetailScope · étude de <a href="../">Badreddine Channoufi</a></p><p>Source : UCI Online Retail · données historiques, <span className="nowrap">2010-2011</span> · <a href="./THIRD_PARTY_NOTICES.txt">Licences tierces</a></p></div></footer>
  {toast&&<div className="toast" role="status">{toast}</div>}</div>
 }
 
