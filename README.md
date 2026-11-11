@@ -15,7 +15,7 @@ Les filtres pays et mois s'appliquent aux indicateurs, graphiques, tableaux et e
 
 ## Démarrer
 
-Prérequis : Node.js 22 ou version ultérieure compatible avec Vite 7. Python 3.11+ est nécessaire uniquement pour reconstruire les données. Les agrégats sont déjà présents dans le dépôt.
+Prérequis : Node.js 22.12 ou version ultérieure compatible avec Vite 7. Python 3.11+ est nécessaire uniquement pour reconstruire les données. Les agrégats sont déjà présents dans le dépôt.
 
 ```bash
 npm ci
