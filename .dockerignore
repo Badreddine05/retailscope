@@ -1,0 +1,7 @@
+node_modules
+dist
+.git
+data
+artifacts
+.openai
+__pycache__

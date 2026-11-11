@@ -7,7 +7,7 @@ export function selectData(data,{country='All',start,end}) {
   const inPeriod = m => m>=start&&m<=end;
   const slices=data.slices.filter(r=>inCountry(r[1])&&inPeriod(r[0]));
   const totals=slices.reduce((a,r)=>({gross:a.gross+r[2],credit:a.credit+r[3],orders:a.orders+r[4],lines:a.lines+r[5],units:a.units+r[6]}),{gross:0,credit:0,orders:0,lines:0,units:0});
-  totals.net=totals.gross-totals.credit;totals.aov=totals.orders?totals.gross/totals.orders:0;totals.creditRate=totals.gross?totals.credit/totals.gross:0;
+  totals.net=totals.gross-totals.credit;totals.aov=totals.orders?totals.gross/totals.orders:null;totals.creditRate=totals.gross?totals.credit/totals.gross:null;
   const series=data.months.filter(inPeriod).map(month=>{const rows=slices.filter(r=>r[0]===month);const gross=rows.reduce((s,r)=>s+r[2],0);const credit=rows.reduce((s,r)=>s+r[3],0);return {month,label:monthLabel(month),gross,credit,net:gross-credit,orders:rows.reduce((s,r)=>s+r[4],0)};});
   const cm=new Map();for(const r of slices){const x=cm.get(r[1])||{country:r[1],gross:0,net:0,orders:0};x.gross+=r[2];x.net+=r[2]-r[3];x.orders+=r[4];cm.set(r[1],x);}
   const countries=[...cm.values()].sort((a,b)=>b.net-a.net);
@@ -32,5 +32,5 @@ export function selectData(data,{country='All',start,end}) {
   const cohorts=[...cohortMap.values()].sort((a,b)=>a.month.localeCompare(b.month)).map(c=>({month:c.month,size:c.clients.length,retention:Array.from({length:12},(_,age)=>{if(monthIndex(c.month)+age>monthIndex(lastComplete))return null;return c.clients.filter(months=>[...months].some(m=>monthIndex(m)-monthIndex(c.month)===age)).length/c.clients.length;})}));
   return {totals,series,countries,products,customers,segments,cohorts,identifiedOrders,filteredOrders};
 }
-export function csvEscape(value){const s=String(value??'');const safe=/^[=+@\-]/.test(s)?"'"+s:s;return '"'+safe.replaceAll('"','""')+'"';}
+export function csvEscape(value){const s=String(value??'');const numeric=/^-?\d+(\.\d+)?$/.test(s);const safe=!numeric&&/^[=+@\-\t\r]/.test(s)?"'"+s:s;return '"'+safe.replaceAll('"','""')+'"';}
 export function toCsv(headers,rows){return '\uFEFF'+[headers,...rows].map(r=>r.map(csvEscape).join(';')).join('\r\n');}
