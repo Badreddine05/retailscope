@@ -1,0 +1,9 @@
+node_modules/
+dist/
+data/raw/
+data/warehouse/
+__pycache__/
+*.pyc
+.env*
+.openai/
+artifacts/
